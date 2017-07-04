@@ -65,6 +65,5 @@ php artisan vendor:publish --provider="Klisl\Locale\LocaleServiceProvider"
 <a href="{{ Klisl\Locale\LocaleMiddleware::getLocale() .'/home' }}">Home</a>
 ```
 
-```
+
 Мой блог: [klisl.com](http://klisl.com)  
-```
