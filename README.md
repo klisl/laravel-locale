@@ -51,6 +51,12 @@ php artisan vendor:publish --provider="Klisl\Locale\LocaleServiceProvider"
 Это подключит шаблон `resources\views\locales\locale.blade.php`, внешний вид которого вы можете настроить под дизайн вашего приложения.
 
 
+В случае появления ошибки такого плана:  ReflectionException Class ...Controller does not exist
+вам потребуется указать пространство имен контроллеров в маршрутах, например:
+```
+Route::get('test', ['uses' => 'App\Http\Controllers\TestController@index', 'as' => 'test']);
+```
+
 
 Создание ссылок на другие страницы вашего сайта
 -------------
