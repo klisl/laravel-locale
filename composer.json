@@ -20,6 +20,13 @@
 	"require": {
         "php": ">=5.4.0"
     },
+	"extra": {
+      "laravel": {
+        "providers": [
+          "Klisl\\Locale\\LocaleServiceProvider"
+        ]
+      }
+    },
     "autoload": {
         "psr-4": {
 			"Klisl\\Locale\\": "src"
