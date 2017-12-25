@@ -20,10 +20,10 @@ class LocaleMiddleware
 
 		//Проверяем метку языка  - есть ли она среди доступных языков
 		if (!empty($segmentsURI[0]) && in_array($segmentsURI[0], config('languages')['languages'])) {
-			
-			if ($segmentsURI[0] != config('languages')['mainLanguage']) return $segmentsURI[0]; 
+			if ($segmentsURI[0] != config('languages')['mainLanguage']) return $segmentsURI[0];
 		}
-		return null; 
+
+		return null;
 	}
 
 	/*
@@ -31,8 +31,19 @@ class LocaleMiddleware
 	 */
 	public function handle($request, Closure $next)
 	{
+
+        //Убираем дубли из URI (public и public/index.php)
+        if (preg_match("/^\/(public)|(public\/index.php)/",\Request::getBaseUrl()) ) {
+
+            $newUrl = str_replace(\Request::getBaseUrl(), '', \Request::getUri());
+            header('Location: '.$newUrl, true, 301);
+            exit();
+
+        }
+
+
 		$locale = self::getLocale();
-		
+
 		if($locale) App::setLocale($locale); 
 		
 		//если метки нет - устанавливаем основной язык $mainLanguage
@@ -42,3 +53,4 @@ class LocaleMiddleware
 	}
 	
 }
+
