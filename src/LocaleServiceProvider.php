@@ -21,7 +21,7 @@ class LocaleServiceProvider extends RouteServiceProvider
 		 */
 
 		Route::prefix(LocaleMiddleware::getLocale())
-			->middleware(LocaleMiddleware::class)
+			->middleware(LocaleMiddleware::class, 'web')
             ->namespace('App\Http\Controllers')
 			->group(base_path('routes/web.php'));
 
