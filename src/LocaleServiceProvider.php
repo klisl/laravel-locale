@@ -4,7 +4,7 @@ namespace Klisl\Locale;
 
 use App\Providers\RouteServiceProvider;
 use Route;
-
+use Config;
 
 
 class LocaleServiceProvider extends RouteServiceProvider
@@ -29,6 +29,10 @@ class LocaleServiceProvider extends RouteServiceProvider
         if (!$this->app->routesAreCached()) {
             include __DIR__ . '/../routes/route.php';
         }
+
+        //Устанавливаем текущий язык в конфигурационный файл
+        $language = LocaleMiddleware::getLocale();
+        if($language) Config::set('app.locale', $language);
 
 
 		//Указываем, что файлы из папки config должны быть опубликованы при установке
