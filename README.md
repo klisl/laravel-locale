@@ -67,4 +67,4 @@ php artisan vendor:publish --provider="Klisl\Locale\LocaleServiceProvider"
 ```
 
 
-Мой блог: [klisl.com](http://klisl.com)  
+Мой блог: [klisl.com](https://klisl.com)  
